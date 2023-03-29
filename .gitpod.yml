@@ -3,20 +3,13 @@ tasks:
     before: |
       printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
-      mkdir data-files
-      curl https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/videos.csv \
-        --output data-files/videos.csv
-      curl https://dlcdn.apache.org/cassandra/4.1.0/apache-cassandra-4.1.0-bin.tar.gz \
-        --output apache-cassandra-4.1.0-bin.tar.gz
-      tar xf apache-cassandra-4.1.0-bin.tar.gz
-      cd apache-cassandra-4.1.0/bin
-      ./cassandra
+      curl https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab06-environment.tar.gz \
+        --output environment.tar.gz
+      tar xf environment.tar.gz
+      ./apache-cassandra-4.1.0/bin/cassandra
     init: |
-      pip install -U cqlsh
     command: | 
       clear
-      echo "Lab Environment Ready"
-
 github:
   prebuilds:
     main: true
