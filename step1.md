@@ -62,6 +62,10 @@ WITH HEADER = TRUE;
 SELECT * FROM videos_by_tag;
 ```
 
+✅ Exit *cqlsh*:
+```
+quit
+```
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"intro"}]'
