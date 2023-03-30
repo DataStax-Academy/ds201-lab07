@@ -41,7 +41,7 @@ You should see that the SSTable count is now 1 and the number of Memtable cells 
 ./nodetool tpstats
 ```
 ```
-./nodetool help netstate
+./nodetool help netstats
 ```
 ```
 ./nodetool netstats
