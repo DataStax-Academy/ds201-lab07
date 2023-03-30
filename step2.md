@@ -33,17 +33,58 @@
 ./nodetool describecluster
 ```
 
-✅ Run *nodetool* with the `info` command to display information about thhis node:
+You should see information about the cluster. 
+
+**Question:** What is the name of the cluster?
+
+<details><summary><b>Answer</b></summary>
+<p>
+The cluster is called <i>Test Cluster</i>.
+</p>
+</details>
+<br>
+
+**Question:** How many nodes are in the cluster?
+
+<details><summary><b>Answer</b></summary>
+<p>
+The cluster has 1 node.
+</p>
+</details>
+<br>
+
+
+✅ Run *nodetool* with the `info` command to display information about this node:
 ```
 ./nodetool info
 ```
+
+**Question:** What is the name of the data center?
+
+<details><summary><b>Answer</b></summary>
+<p>
+The data center is called <i>datacenter1</i>.
+</p>
+</details>
+<br>
+
+**Question:** Is *gossip* active in this node?
+
+<details><summary><b>Answer</b></summary>
+<p>
+Yes, <i>gossip</i> is active in this node.
+</p>
+</details>
+<br>
+
+You should see information about the node.
 
 ✅ Run *nodetool* with the `help tablestats` command to display help about the `tablestats` command:
 ```
 ./nodetool help tablestats
 ```
 
-✅ Run *nodetool* with the `tablestats killrvideo` command to display statistics on tasble in the *killrvideo* namespace
+✅ Run *nodetool* with the `tablestats killrvideo` command to display statistics on tables in the *killrvideo* namespace
 ```
 ./nodetool tablestats killrvideo
 ```
