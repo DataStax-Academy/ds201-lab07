@@ -12,12 +12,15 @@
  <a href='command:katapod.loadPage?[{"step":"intro"}]'
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
+   <a href='command:katapod.loadPage?[{"step":"step2"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
 <span class="step-count"> Step 1 of 1</span>
 </div>
 
 <!-- CONTENT -->
 
-<div class="step-title">Explore with *nodetool*</div>
+<div class="step-title">Create the <i>videos_by_tag</i> table</div>
 
 Use *nodetool* to verify that Cassandra is running. (You may need to run this command multiple times.)
 
@@ -26,60 +29,45 @@ Use *nodetool* to verify that Cassandra is running. (You may need to run this co
 cd apache-cassandra-4.1.0/bin
 ./nodetool status
 ```
-
-✅ Run *nodetool* with the `help` command and take your time to learn about various available commands:
+✅ Start `cqlsh`:
 ```
-./nodetool help
-```
-
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
-```
-./nodetool describecluster
+./cqlsh
 ```
 
-✅ Run *nodetool* with the `info` command to display information about thhis node:
+✅ Create a keyspace called *killrvideo*. Use `SimpleStrategy` for the replication class with a replication factor of one.
 ```
-./nodetool info
-```
-
-✅ Run *nodetool* with the `help tablestats` command to display help about the `tablestats` command:
-```
-./nodetool help tablestats
-```
-
-✅ Run *nodetool* with the `tablestats killrvideo` command to display statistics on tasble in the *killrvideo* namespace
-```
-./nodetool tablestats killrvideo
+CREATE KEYSPACE killrvideo
+WITH replication = {
+  'class':'SimpleStrategy', 
+  'replication_factor': 1
+};
 ```
 
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
+✅ *Use* the keyspace:
+```
+use killrvideo;
 ```
 
+✅ Create the `videos_by_tag` table: 
+```
+CREATE TABLE videos_by_tag (
+  tag TEXT,
+  video_id TIMEUUID,
+  added_date TIMESTAMP,
+  title TEXT,
+  PRIMARY KEY ((tag), video_id)
+);
+
+✅ Use the COPY command to import the `videos-by-tag.csv` data into your new table:
+```
+COPY videos_by_tag (tag, video_id, added_date, title)
+FROM '/workspace/ds201-lab06/data-files/videos-by-tag.csv'
+WITH HEADER = TRUE;
 ```
 
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
+✅ Retrieve all rows from table *videos_by_tag* and verify that you get 5 rows as expected.
 ```
-
-```
-
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
-```
-
-```
-
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
-```
-
-```
-
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
-```
-
-```
-
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
-```
-
+SELECT * FROM videos_by_tag;
 ```
 
 <!-- NAVIGATION -->
@@ -87,4 +75,7 @@ cd apache-cassandra-4.1.0/bin
  <a href='command:katapod.loadPage?[{"step":"intro"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
+   <a href='command:katapod.loadPage?[{"step":"step2"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
 </div>
