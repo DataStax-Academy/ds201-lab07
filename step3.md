@@ -31,7 +31,24 @@ The *videos_by_tag* table has 5 rows. For now, the data is stored in the *memtab
 ./nodetool tablestats killrvideo
 ```
 
-You should see that there 
+You should see that the SSTable count is now 1 and the number of Memtable cells is now 0.
+
+✅ Explore some other commonly used *nodetool* commands:
+```
+./nodetool help tpstats
+```
+```
+./nodetool tpstats
+```
+```
+./nodetool help netstate
+```
+```
+./nodetool netstats
+```
+```
+./nodetool help repair
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
