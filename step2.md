@@ -89,6 +89,26 @@ You should see information about the node.
 ./nodetool tablestats killrvideo
 ```
 
+Answer these questions about the *killrvideo* keyspace:
+
+**Question:** How many SSTables are there?
+
+<details><summary><b>Answer</b></summary>
+<p>
+There are no SSTables because the data is still in the memtable (and commit log) and has not been flushed to disk.
+</p>
+</details>
+<br>
+
+**Question:** How many cells are in the memtable?
+
+<details><summary><b>Answer</b></summary>
+<p>
+There are 2 cells in the memtable.
+</p>
+</details>
+<br>
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
   <a href='command:katapod.loadPage?[{"step":"step1"}]'

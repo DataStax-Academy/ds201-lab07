@@ -17,8 +17,21 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">XXXX</div>
+<div class="step-title">Flush the memtable</div>
 
+The *videos_by_tag* table has 5 rows. For now, the data is stored in the *memtable* until the data is flushed to disk.
+
+✅ Run *nodetool* with the `flush` command to write the memtable(s) to disk:
+```
+./nodetool flush
+```
+
+✅ Run *nodetool* with the `tablestats killrvideo` command again:
+```
+./nodetool tablestats killrvideo
+```
+
+You should see that there 
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
