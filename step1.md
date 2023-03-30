@@ -34,16 +34,7 @@ cd apache-cassandra-4.1.0/bin
 ./cqlsh
 ```
 
-✅ Create a keyspace called *killrvideo*. Use `SimpleStrategy` for the replication class with a replication factor of one.
-```
-CREATE KEYSPACE killrvideo
-WITH replication = {
-  'class':'SimpleStrategy', 
-  'replication_factor': 1
-};
-```
-
-✅ *Use* the keyspace:
+✅ Use the *killrvideo* keyspace:
 ```
 use killrvideo;
 ```
@@ -57,6 +48,7 @@ CREATE TABLE videos_by_tag (
   title TEXT,
   PRIMARY KEY ((tag), video_id)
 );
+```
 
 ✅ Use the COPY command to import the `videos-by-tag.csv` data into your new table:
 ```
