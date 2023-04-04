@@ -20,13 +20,17 @@
             </ul>
             <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
-              <li><span class="scenario-objective">Learn more about *nodetool*, its commands and options</span></li>
-              <li><span class="scenario-objective">Use *nodetool* with several common commands</span></li>
-            </ul>
-                        <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-cassandra">
-              Start the lab
-            </a>
+              <li><span class="scenario-objective">Start a two-node Cassandra cluster</span></li>
+              <li><span class="scenario-objective">Determine the token range ownership for nodes</span></li>
+              <li><span class="scenario-objective">Find the corresponding node where partitions are stored</span></li>
+          </ul>
       </div>
+      One of the secrets to Cassandra’s performance is the use of a ring that keeps track of tokens. This token ring allows Cassandra to know exactly which nodes contain which partitions. The ring also helps to avoid single points of failure.
+      <br>
+      <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-cassandra">
+        Start the lab
+      </a>
+
      </div>
     </div>
 </main>

@@ -26,7 +26,6 @@ Use *nodetool* to verify that Cassandra is running. (You may need to run this co
 
 ✅ Verify that Cassandra is running.
 ```
-cd apache-cassandra-4.1.0/bin
 ./nodetool status
 ```
 ✅ Start `cqlsh`:
