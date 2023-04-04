@@ -6,7 +6,6 @@ tasks:
       curl https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab06-environment.tar.gz \
         --output environment.tar.gz
       tar xf environment.tar.gz
-      ./apache-cassandra-4.1.0/bin/cassandra
     init: |
     command: | 
       clear
