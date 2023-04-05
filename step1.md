@@ -34,7 +34,7 @@ In the file find:
 
 `# initial_token:`
 
-Un-comment and chaneg initial_token value and set it to `-9223372036854775808`. This will allow *node2* to manage half of the token range – all of the positive tokens and one negative token of `-9223372036854775808`
+Un-comment and change `initial_token` value setting it to `-9223372036854775808`. This will allow *node2* to manage half of the token range – all of the positive tokens and one negative token of `-9223372036854775808`
 
 The new entry should look like:
 

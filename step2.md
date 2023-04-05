@@ -20,12 +20,18 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Explore nodetool commands</div>
+<div class="step-title">Start the nodes in the cluster</div>
 
 
-✅ Run *nodetool* with the `help` command and take your time to learn about various available commands:
+✅ Start *node1*
 ```
-./nodetool help
+/workspace/ds201-lab06/node1/bin/cassandra
+```
+Use `nodetool` to verify that node1 is running. (You may need to run this command multiple times.)
+
+✅ Verify that Cassandra is running.
+```
+/workspace/ds201-lab06/node1/bin/nodetool status
 ```
 
 ✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
