@@ -17,13 +17,13 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Flush the memtable</div>
+<div class="step-title">Recreate the tables from the previous exercises</div>
 
-The *videos_by_tag* table has 5 rows. For now, the data is stored in the *memtable* until the data is flushed to disk.
+In this step you will recreate the tables from the prvious exercises. This time the data will be distributed across our two-node cluster.
 
-✅ Run *nodetool* with the `flush` command to write the memtable(s) to disk:
+✅ Run *cqlsh* to connect to the cluster:
 ```
-./nodetool flush
+/workspace/ds201-lab06/node1/bin/cqlsh
 ```
 
 ✅ Run *nodetool* with the `tablestats killrvideo` command again:

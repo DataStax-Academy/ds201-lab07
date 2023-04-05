@@ -27,6 +27,12 @@
 ```
 /workspace/ds201-lab06/node1/bin/cassandra
 ```
+---
+**Note:** You may see a `java.net.ConnectionError`, this is because this server is looking for a seed node but it is the first node in the cluster so there are none available. This is expected behavior.
+
+---
+
+
 Use `nodetool` to verify that node1 is running. (You may need to run this command multiple times.)
 
 ✅ Verify that Cassandra is running.
@@ -34,86 +40,24 @@ Use `nodetool` to verify that node1 is running. (You may need to run this comman
 /workspace/ds201-lab06/node1/bin/nodetool status
 ```
 
-✅ Run *nodetool* with the `describecluster` command to display high-level information about the cluster
+✅ Once the first node is running, start the second node:
 ```
-./nodetool describecluster
-```
-
-You should see information about the cluster. 
-
-**Question:** What is the name of the cluster?
-
-<details><summary><b>Answer</b></summary>
-<p>
-The cluster is called <i>Test Cluster</i>.
-</p>
-</details>
-<br>
-
-**Question:** How many nodes are in the cluster?
-
-<details><summary><b>Answer</b></summary>
-<p>
-The cluster has 1 node.
-</p>
-</details>
-<br>
-
-
-✅ Run *nodetool* with the `info` command to display information about this node:
-```
-./nodetool info
+/workspace/ds201-lab06/node1/bin/cassandra
 ```
 
-**Question:** What is the name of the data center?
+Use `nodetool` to verify that both nodes are  running. (You may need to run this command multiple times.)
 
-<details><summary><b>Answer</b></summary>
-<p>
-The data center is called <i>datacenter1</i>.
-</p>
-</details>
-<br>
-
-**Question:** Is *gossip* active in this node?
-
-<details><summary><b>Answer</b></summary>
-<p>
-Yes, <i>gossip</i> is active in this node.
-</p>
-</details>
-<br>
-
-You should see information about the node.
-
-✅ Run *nodetool* with the `help tablestats` command to display help about the `tablestats` command:
+✅ Verify that Cassandra is running.
 ```
-./nodetool help tablestats
+/workspace/ds201-lab06/node1/bin/nodetool status
 ```
 
-✅ Run *nodetool* with the `tablestats killrvideo` command to display statistics on tables in the *killrvideo* namespace
-```
-./nodetool tablestats killrvideo
-```
+* Both nodes should be *Up* and *Normal*.
+* The *Owns* shows 100% for both nodes because no (non-system) keyspaces have been created yet.
 
-Answer these questions about the *killrvideo* keyspace:
 
-**Question:** How many SSTables are there?
 
-<details><summary><b>Answer</b></summary>
-<p>
-There are no SSTables because the data is still in the memtable (and commit log) and has not been flushed to disk.
-</p>
-</details>
-<br>
-
-**Question:** How many cells are in the memtable?
-
-<details><summary><b>Answer</b></summary>
-<p>
-There are 2 cells in the memtable.
-</p>
-</details>
-<br>
+<img src="https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab06-image01.png" />
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
