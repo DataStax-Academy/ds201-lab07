@@ -12,53 +12,33 @@
  <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-<span class="step-count"> Step 3 of 4</span>
+<span class="step-count"> Step 4 of 4</span>
 </div>
 
 <!-- CONTENT -->
 
-<div class="step-title">Recreate the tables from the previous exercises</div>
+<div class="step-title">Examine partitioning and datadistribution in the cluster</div>
 
-In this step you will recreate the tables from the prvious exercises. This time the data will be distributed across our two-node cluster.
+You should still be in *cqlsh*, if not start it again and connect to the cluster.
 
-✅ Run *cqlsh* to connect to the cluster:
+✅ Execute the following query to retrieve the tag partition key value for each row from the videos_by_tag table, along with its corresponding token:
 ```
-/workspace/ds201-lab06/node1/bin/cqlsh
+SELECT tag, token(tag), title FROM videos_by_tag;
 ```
----
-**Note:** You could run *cqlsh* from either the `node1` or `node2` directory. You could also specify to which server (by IP) it should connect. Since all Casandra nodes are peers, it doesn't matter where inthe cluster you connect.
+**Question:** How many unique tokens are in the table?
 
----
+<details><summary><b>Answer</b></summary>
+<p>
+The <i>video_id</i> column is the primary key.
+</p>
+</details>
+<br>
 
-✅ Recreate the two tables we made in the previous exercises and import their data:
+
+
+✅ Exit from *cqlsh*:
 ```
-CREATE KEYSPACE killrvideo 
-WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1 };
-
-USE killrvideo;
-
-CREATE TABLE videos (
-  id uuid,
-  added_date timestamp,
-  title text,
-  PRIMARY KEY ((id))
-);
-
-COPY videos(id, added_date, title) 
-FROM '/workspace/ds201-lab06/data-files/videos.csv' 
-WITH HEADER=TRUE;
-
-CREATE TABLE videos_by_tag (
-  tag text,
-  video_id uuid,
-  added_date timestamp,
-  title text,
-  PRIMARY KEY ((tag), added_date, video_id))
-  WITH CLUSTERING ORDER BY(added_date DESC, video_id ASC);
-
-COPY videos_by_tag(tag, video_id, added_date, title) 
-FROM '/workspace/ds201-lab06/data-files/videos-by-tag.csv' 
-WITH HEADER=TRUE;
+exit
 ```
 
 You should see that the SSTable count is now 1 and the number of Memtable cells is now 0.
