@@ -12,9 +12,6 @@
  <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-   <a href='command:katapod.loadPage?[{"step":"step4"}]' 
-    class="btn btn-dark navigation-top-right">Next ➡️
-  </a>
 <span class="step-count"> Step 3 of 4</span>
 </div>
 
@@ -80,7 +77,4 @@ SELECT * FROM videos_by_tag;
   <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-   <a href='command:katapod.loadPage?[{"step":"step4"}]' 
-    class="btn btn-dark navigation-top-right">Next ➡️
-  </a>
 </div>

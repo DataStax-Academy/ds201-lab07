@@ -15,7 +15,7 @@
   <a href='command:katapod.loadPage?[{"step":"step3"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
-<span class="step-count"> Step 2 of 3</span>
+<span class="step-count"> Step 2 of 4</span>
 </div>
 
 <!-- CONTENT -->
