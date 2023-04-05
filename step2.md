@@ -42,7 +42,7 @@ Use `nodetool` to verify that node1 is running. (You may need to run this comman
 
 ✅ Once the first node is running, start the second node:
 ```
-/workspace/ds201-lab06/node1/bin/cassandra
+/workspace/ds201-lab06/node2/bin/cassandra
 ```
 
 Use `nodetool` to verify that both nodes are  running. (You may need to run this command multiple times.)
