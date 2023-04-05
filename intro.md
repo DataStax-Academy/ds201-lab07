@@ -15,8 +15,8 @@
       <div class="feature col div-choice">
         <div class="scenario-description">Node</div>
           <ul>
-              <li><span class="scenario-description-attribute">Difficulty</span>: Beginner</li>
-              <li><span class="scenario-description-attribute">Time</span>: 10 minutes</li>
+            <li><span class="scenario-description-attribute">Difficulty</span>: Beginner</li>
+            <li><span class="scenario-description-attribute">Time</span>: 10 minutes</li>
           </ul>
           <div class="scenario-objectives">In this hands-on lab, you will:</div>
             <ul>
@@ -26,7 +26,7 @@
             </ul>
           </div>
           <p>
-            One of the secrets to Cassandra’s performance is the use of a ring that keeps track of tokens. This token ring allows Cassandra to know exactly which nodes contain which partitions. The ring also helps to avoid single points of failure.
+            One of the keys to Cassandra’s performance is the use of a ring that keeps track of tokens. This token ring allows Cassandra to know exactly which nodes contain which partitions. The ring also helps to avoid single points of failure.
           </p>   
           <a href='command:katapod.loadPage?[{"step":"step1"}]' class="btn btn-primary btn-cassandra">
             Start the lab

@@ -20,51 +20,28 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Create the <i>videos_by_tag</i> table</div>
+<div class="step-title">Edit <i>cassandra.yaml</i> and set the token range</div>
 
-Use *nodetool* to verify that Cassandra is running. (You may need to run this command multiple times.)
+In this exercise there is a two-node Cassandra cluster. The root directories for the nodes are: `./node1` and `./node2`. You are going to edit the configuration file (`cassandra.yaml`) for *node2*. You are going to assign an `initial_token` value of `-9223372036854775808`
 
-✅ Verify that Cassandra is running.
+
+✅ Open `/workspace/ds201-lab06/node2/conf/cassandra.yaml` in a *nano* or the text editor of your choice.
 ```
-./nodetool status
-```
-✅ Start `cqlsh`:
-```
-./cqlsh
+nano /workspace/ds201-lab06/node2/conf/cassandra.yaml
 ```
 
-✅ Use the *killrvideo* keyspace:
-```
-use killrvideo;
-```
+In the file find:
 
-✅ Create the `videos_by_tag` table: 
-```
-CREATE TABLE videos_by_tag (
-  tag TEXT,
-  video_id TIMEUUID,
-  added_date TIMESTAMP,
-  title TEXT,
-  PRIMARY KEY ((tag), video_id)
-);
-```
+`# initial_token:`
 
-✅ Use the COPY command to import the `videos-by-tag.csv` data into your new table:
-```
-COPY videos_by_tag (tag, video_id, added_date, title)
-FROM '/workspace/ds201-lab06/data-files/videos-by-tag.csv'
-WITH HEADER = TRUE;
-```
+Un-comment and chaneg initial_token value and set it to `-9223372036854775808`. This will allow *node2* to manage half of the token range – all of the positive tokens and one negative token of `-9223372036854775808`
 
-✅ Retrieve all rows from table *videos_by_tag* and verify that you get 5 rows as expected.
-```
-SELECT * FROM videos_by_tag;
-```
+The new entry should look like:
 
-✅ Exit *cqlsh*:
-```
-quit
-```
+`initial_token: -9223372036854775808`
+
+Save and exit the editor.
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
  <a href='command:katapod.loadPage?[{"step":"intro"}]'
