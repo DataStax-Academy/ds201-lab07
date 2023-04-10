@@ -13,7 +13,7 @@ github:
   prebuilds:
     main: true
 ports:
-  - port: 1025-9999
+  - port: 1-9999
     onOpen: ignore
 vscode:
    extensions:
