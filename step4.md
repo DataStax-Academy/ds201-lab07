@@ -29,27 +29,37 @@ SELECT tag, token(tag), title FROM videos_by_tag;
 
 <details><summary><b>Answer</b></summary>
 <p>
-The <i>video_id</i> column is the primary key.
+There are two unique tokens, one for each unique partition key.
 </p>
 </details>
 <br>
-
-
 
 ✅ Exit from *cqlsh*:
 ```
 exit
 ```
 
-You should see that the SSTable count is now 1 and the number of Memtable cells is now 0.
+✅  Run the following command to refresh your memory as to which nodes own which token ranges.
+```
+/workspace/ds201-lab06/node1/bin/nodetool ring
+```
+✅  Execute the following commands to map the specific tags (`datastax` and `cassandra`) to endpoints/nodes.
 
-✅ Examine the data in the *videos* table:
+---
+**Note:** Note that we must also supply the keyspace and table name we are interested in since we set replication on a per-keyspace basis. There is more on replication to come later in this course.
+
+---
+
+
 ```
-SELECT * FROM videos;
+/workspace/ds201-lab06/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'datastax'
+
+/workspace/ds201-lab06/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'cassandra'
 ```
-✅ Examine the data in the *videos_by_tag* table:
+
+✅  Run `nodetool status` again to see the token range ownership percentages.
 ```
-SELECT * FROM videos_by_tag;
+/workspace/ds201-lab06/node1/bin/nodetool status
 ```
 
 <!-- NAVIGATION -->

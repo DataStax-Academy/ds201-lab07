@@ -74,7 +74,6 @@ SELECT * FROM videos;
 ```
 SELECT * FROM videos_by_tag;
 ```
-
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
   <a href='command:katapod.loadPage?[{"step":"step2"}]'
