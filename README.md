@@ -1,4 +1,4 @@
-# DS201 Exercise 0607
+# DS201 Exercise 07
 
 ## Node
 
