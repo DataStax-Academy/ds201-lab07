@@ -62,6 +62,15 @@ exit
 /workspace/ds201-lab07/node1/bin/nodetool status
 ```
 
+**Question:** What do the *Owns* values mean?
+
+<details><summary><b>Answer</b></summary>
+<p>
+The <i>Owns</i> fields are the percentage of tokens owned by each node in the cluster. The tokens may not be evenly distributed because there are such a small number. The *videos* table as 5 unique tokens and the *videos_by_tag* table has 2.
+</p>
+</details>
+<br>
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
   <a href='command:katapod.loadPage?[{"step":"step2"}]'
