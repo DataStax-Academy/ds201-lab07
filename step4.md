@@ -41,7 +41,7 @@ exit
 
 ✅  Run the following command to refresh your memory as to which nodes own which token ranges.
 ```
-/workspace/ds201-lab06/node1/bin/nodetool ring
+/workspace/ds201-lab07/node1/bin/nodetool ring
 ```
 ✅  Execute the following commands to map the specific tags (`datastax` and `cassandra`) to endpoints/nodes.
 
@@ -52,14 +52,14 @@ exit
 
 
 ```
-/workspace/ds201-lab06/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'datastax'
+/workspace/ds201-lab07/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'datastax'
 
-/workspace/ds201-lab06/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'cassandra'
+/workspace/ds201-lab07/node1/bin/nodetool getendpoints killrvideo videos_by_tag 'cassandra'
 ```
 
 ✅  Run `nodetool status` again to see the token range ownership percentages.
 ```
-/workspace/ds201-lab06/node1/bin/nodetool status
+/workspace/ds201-lab07/node1/bin/nodetool status
 ```
 
 <!-- NAVIGATION -->

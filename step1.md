@@ -25,9 +25,9 @@
 In this exercise there is a two-node Cassandra cluster. The root directories for the nodes are: `./node1` and `./node2`. You are going to edit the configuration file (`cassandra.yaml`) for *node2*. You are going to assign an `initial_token` value of `-9223372036854775808`
 
 
-✅ Open `/workspace/ds201-lab06/node2/conf/cassandra.yaml` in a *nano* or the text editor of your choice.
+✅ Open `/workspace/ds201-lab07/node2/conf/cassandra.yaml` in a *nano* or the text editor of your choice.
 ```
-nano /workspace/ds201-lab06/node2/conf/cassandra.yaml
+nano /workspace/ds201-lab07/node2/conf/cassandra.yaml
 ```
 
 In the file find:

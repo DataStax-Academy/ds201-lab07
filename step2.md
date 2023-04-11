@@ -25,7 +25,7 @@
 
 ✅ Start *node1*
 ```
-/workspace/ds201-lab06/node1/bin/cassandra
+/workspace/ds201-lab07/node1/bin/cassandra
 ```
 ---
 **Note:** You may see a `java.net.ConnectionError`, this is because this server is looking for a seed node but it is the first node in the cluster so there are none available. This is expected behavior.
@@ -37,19 +37,19 @@ Use `nodetool` to verify that node1 is running. (You may need to run this comman
 
 ✅ Verify that Cassandra is running.
 ```
-/workspace/ds201-lab06/node1/bin/nodetool status
+/workspace/ds201-lab07/node1/bin/nodetool status
 ```
 
 ✅ Once the first node is running, start the second node:
 ```
-/workspace/ds201-lab06/node2/bin/cassandra
+/workspace/ds201-lab07/node2/bin/cassandra
 ```
 
 Use `nodetool` to verify that both nodes are  running. (You may need to run this command multiple times.)
 
 ✅ Verify that Cassandra is running.
 ```
-/workspace/ds201-lab06/node1/bin/nodetool status
+/workspace/ds201-lab07/node1/bin/nodetool status
 ```
 
 * Both nodes should be *Up* and *Normal*.
@@ -57,7 +57,7 @@ Use `nodetool` to verify that both nodes are  running. (You may need to run this
 
 
 
-<img src="https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab06-image01.png" />
+<img src="https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab07-image01.png" />
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">

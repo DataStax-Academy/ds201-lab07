@@ -26,7 +26,7 @@ In this step you will recreate the tables from the prvious exercises. This time 
 
 ✅ Run *cqlsh* to connect to the cluster:
 ```
-/workspace/ds201-lab06/node1/bin/cqlsh
+/workspace/ds201-lab07/node1/bin/cqlsh
 ```
 ---
 **Note:** You could run *cqlsh* from either the `node1` or `node2` directory. You could also specify to which server (by IP) it should connect. Since all Casandra nodes are peers, it doesn't matter where inthe cluster you connect.
@@ -48,7 +48,7 @@ CREATE TABLE videos (
 );
 
 COPY videos(id, added_date, title) 
-FROM '/workspace/ds201-lab06/data-files/videos.csv' 
+FROM '/workspace/ds201-lab07/data-files/videos.csv' 
 WITH HEADER=TRUE;
 
 CREATE TABLE videos_by_tag (
@@ -60,7 +60,7 @@ CREATE TABLE videos_by_tag (
   WITH CLUSTERING ORDER BY(added_date DESC, video_id ASC);
 
 COPY videos_by_tag(tag, video_id, added_date, title) 
-FROM '/workspace/ds201-lab06/data-files/videos-by-tag.csv' 
+FROM '/workspace/ds201-lab07/data-files/videos-by-tag.csv' 
 WITH HEADER=TRUE;
 ```
 
