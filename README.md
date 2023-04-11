@@ -3,9 +3,9 @@
 ## Node
 
 **In this hands-on lab, you will:**
-* Start a two-node Cassandra cluster
-* Determine the token range ownership for nodes
-* Find the corresponding node where partitions are stored
+*Learn more about nodetool, its commands and options
+*Use nodetool with several common commands
+
 
 
 ## Start the hands-on lab:
