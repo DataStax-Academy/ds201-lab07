@@ -1,7 +1,6 @@
 tasks:
   - name: install-dependencies
     before: |
-      printf 'export PATH="$HOME%s:$PATH"\n' "/.astra/cli" >> $HOME/.bashrc
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
       curl https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab07-environment.tar.gz \
         --output environment.tar.gz
