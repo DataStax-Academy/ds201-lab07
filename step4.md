@@ -20,7 +20,7 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Examine partitioning and datadistribution in the cluster</div>
+<div class="step-title">Examine partitioning and data distribution in the cluster</div>
 
 You should still be in *cqlsh*, if not start it again and connect to the cluster.
 
