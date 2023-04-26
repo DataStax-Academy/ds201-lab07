@@ -13,6 +13,9 @@
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
 <span class="step-count"> Step 4 of 4</span>
+  <a href='command:katapod.loadPage?[{"step":"finish"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
 </div>
 
 <!-- CONTENT -->
@@ -76,4 +79,7 @@ The <i>Owns</i> fields are the percentage of tokens owned by each node in the cl
   <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
+   <a href='command:katapod.loadPage?[{"step":"finish"}]' 
+    class="btn btn-dark navigation-top-right">Next ➡️
+  </a>
 </div>

@@ -1,10 +1,12 @@
 # DS201 Exercise 07
 
-## Node
+## Ring
 
 **In this hands-on lab, you will:**
-*Learn more about nodetool, its commands and options
-*Use nodetool with several common commands
+* Start a two-node DataStax Enterprise cluster
+* Determine the token range ownership for nodes
+* Find the corresponding node where partitions are stored
+
 
 
 

@@ -9,7 +9,7 @@
 
 <!-- NAVIGATION -->
 <div id="navigation-top" class="navigation-top">
- <a href='command:katapod.loadPage?[{"step":"step3"}]'
+ <a href='command:katapod.loadPage?[{"step":"step4"}]'
    class="btn btn-dark navigation-top-left">⬅️ Back
  </a>
 </div>
@@ -24,8 +24,9 @@
           <br/>
           <div class="scenario-objectives">In this hands-on lab, you learned how to:</div>
             <ul>
-              <li><span class="scenario-objective">Create tables with different partition keys</span></li>
-              <li><span class="scenario-objective">Execute CQL queries over tables with different partition keys</span></li>
+              <li><span class="scenario-objective">Start a two-node DataStax Enterprise cluster</span></li>
+              <li><span class="scenario-objective">Determine the token range ownership for nodes</span></li>
+              <li><span class="scenario-objective">Find the corresponding node where partitions are stored</span></li>
             </ul>
         </div>
       </div>
@@ -34,7 +35,7 @@
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
- <a href='command:katapod.loadPage?[{"step":"step3"}]'
+ <a href='command:katapod.loadPage?[{"step":"step4"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
 </div>
