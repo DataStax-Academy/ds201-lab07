@@ -10,8 +10,8 @@ tasks:
       tar xf apache-cassandra-4.1.0-bin.tar.gz
       mv apache-cassandra-4.1.0 node1
       cp -r node1/ node2/
-      sed -i 's/listen_address: localhost/listen_address: l27.0.0.1/' node1/conf/cassandra.yaml
-      sed -i 's/listen_address: localhost/listen_address: l27.0.0.2/' node2/conf/cassandra.yaml
+      sed -i 's/listen_address: localhost/listen_address: 127.0.0.1/' node1/conf/cassandra.yaml
+      sed -i 's/listen_address: localhost/listen_address: 127.0.0.2/' node2/conf/cassandra.yaml
     command: | 
       /workspace/ds201-lab07/node1/bin/cassandra
       /workspace/ds201-lab07/node2/bin/cassandra 
