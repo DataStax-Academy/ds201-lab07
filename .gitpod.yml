@@ -17,7 +17,8 @@ tasks:
       sed -i 's/storage_port: 7000/storage_port: 7002/' node2/conf/cassandra.yaml
       sed -i 's/ssl_storage_port: 7001/ssl_storage_port: 7003/' node2/conf/cassandra.yaml
       sed -i 's/native_transport_port: 9042/native_transport_port: 9043/' node2/conf/cassandra.yaml
-      sed -i 's/jmx_port: 7199/jmx_port: 7200/' node2/conf/cassandra.yaml
+      sed -i 's/7199/7200/' node2/conf/cassandra-env.sh
+      
     command: | 
       /workspace/ds201-lab07/node1/bin/cassandra
       /workspace/ds201-lab07/node2/bin/cassandra 
