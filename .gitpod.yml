@@ -3,11 +3,18 @@ tasks:
   - name: install-dependencies
     before: |
       printf 'unset JAVA_TOOL_OPTIONS\n' >> $HOME/.bashrc
+      printf 'export PATH="/workspace/ds201-lab07/node1/bin:$PATH"' >> $HOME/.bashrc
     init: |
-      curl https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab07-environment.tar.gz \
-      --output environment.tar.gz
-      tar xf environment.tar.gz
+      curl https://archive.apache.org/dist/cassandra/4.1.0/apache-cassandra-4.1.0-bin.tar.gz \
+        --output apache-cassandra-4.1.0-bin.tar.gz
+      tar xf apache-cassandra-4.1.0-bin.tar.gz
+      mv apache-cassandra-4.1.0 node1
+      cp -r node1/ node2/
+      sed -i 's/listen_address: localhost/listen_address: l27.0.0.1/' node1/conf/cassandra.yaml
+      sed -i 's/listen_address: localhost/listen_address: l27.0.0.2/' node2/conf/cassandra.yaml
     command: | 
+      /workspace/ds201-lab07/node1/bin/cassandra
+      /workspace/ds201-lab07/node2/bin/cassandra 
 github:
   prebuilds:
     main: true
