@@ -9,8 +9,6 @@ tasks:
         --output environment.tar.gz
       tar xf environment.tar.gz
     command: | 
-      /workspace/ds201-lab07/node1/bin/cassandra
-      /workspace/ds201-lab07/node2/bin/cassandra 
 github:
   prebuilds:
     main: true
