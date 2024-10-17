@@ -12,6 +12,9 @@ tasks:
       cp -r node1/ node2/
       sed -i 's/listen_address: localhost/listen_address: 127.0.0.1/' node1/conf/cassandra.yaml
       sed -i 's/listen_address: localhost/listen_address: 127.0.0.2/' node2/conf/cassandra.yaml
+      sed -i 's/storage_port: 7000/storage_port: 7001/' node2/conf/cassandra.yaml
+      sed -i 's/native_transport_port: 9042/native_transport_port: 9043/' node2/conf/cassandra.yaml
+      sed -i 's/jmx_port: 7199/jmx_port: 7200/' node2/conf/cassandra.yaml
     command: | 
       /workspace/ds201-lab07/node1/bin/cassandra
       /workspace/ds201-lab07/node2/bin/cassandra 
