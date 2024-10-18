@@ -22,7 +22,7 @@
 
 <div class="step-title">Examine partitioning and data distribution in the cluster</div>
 
-You should still be in *cqlsh*, if not start it again and connect to the cluster.
+In this step you will look at the way partition keys are distributed between the nodes.
 
 ✅ Run *cqlsh* to connect to the node:
 ```
@@ -56,6 +56,9 @@ exit
 ```
 nodetool ring
 ```
+
+You should see the toknen ranges assigned to each node. 127.0.0.1 has 16 token ranges and 127.0.0.2 has 2.
+
 ✅  Execute the following commands to map the specific tags (`datastax` and `cassandra`) to endpoints/nodes.
 
 ---
