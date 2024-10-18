@@ -12,10 +12,10 @@
  <a href='command:katapod.loadPage?[{"step":"step1"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-  <a href='command:katapod.loadPage?[{"step":"step3"}]' 
+  <a href='command:katapod.loadPage?[{"step":"step2"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
-<span class="step-count"> Step 2 of 4</span>
+<span class="step-count"> Step 2 of 3</span>
 </div>
 
 <!-- CONTENT -->
@@ -56,12 +56,13 @@ Use `nodetool` to verify that both nodes are running. You may need to run this c
 
 ✅ Verify that the clustered servers are running.
 ```
-/workspace/ds201-lab07/node1/bin/nodetool status
+nodetool status
 ```
 
 * Both nodes should be *Up* and *Normal*.
 * The node listening at `127.0.0.1` should have 16 tokens
-* The node listening at `127.0.0.2` should have 1 token* 
+* The node listening at `127.0.0.2` should have 1 token
+* You should also see that *Owns* significantly more of the data
 
 <img src="https://katapod-file-store.s3.us-west-1.amazonaws.com/ds201/lab07-image01.png" />
 

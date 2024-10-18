@@ -15,7 +15,7 @@
    <a href='command:katapod.loadPage?[{"step":"step2"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
-<span class="step-count"> Step 1 of 4</span>
+<span class="step-count"> Step 1 of 3</span>
 </div>
 
 <!-- CONTENT -->
@@ -32,7 +32,7 @@ Use `nodetool` to verify that node1 is running. (You may need to run this comman
 
 ✅ Verify that Cassandra is running.
 ```
-/workspace/ds201-lab07/node1/bin/nodetool status
+nodetool status
 ```
 
 Once Cassandra is up and running, you will recreate the tables from the prvious exercises. 
@@ -84,6 +84,11 @@ SELECT * FROM videos;
 ✅ Examine the data in the *videos_by_tag* table:
 ```
 SELECT * FROM videos_by_tag;
+```
+
+✅ Exit *cqlsh*:
+```
+exit
 ```
 
 <!-- NAVIGATION -->

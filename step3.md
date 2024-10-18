@@ -12,74 +12,84 @@
  <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-   <a href='command:katapod.loadPage?[{"step":"step4"}]' 
+<span class="step-count"> Step 3 of 3</span>
+  <a href='command:katapod.loadPage?[{"step":"finish"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
-<span class="step-count"> Step 3 of 4</span>
 </div>
 
 <!-- CONTENT -->
 
-<div class="step-title">Recreate the tables from the previous exercises</div>
+<div class="step-title">Examine partitioning and data distribution in the cluster</div>
 
-In this step you will recreate the tables from the prvious exercises. This time the data will be distributed across our two-node cluster.
+You should still be in *cqlsh*, if not start it again and connect to the cluster.
 
-✅ Run *cqlsh* to connect to the cluster:
+✅ Run *cqlsh* to connect to the node:
 ```
 /workspace/ds201-lab07/node1/bin/cqlsh
 ```
+
+✅ Use the `killrvideo` keyspace:
+```
+use killrvideo;
+```
+
+✅ Execute the following query to retrieve the tag partition key value for each row from the videos_by_tag table, along with its corresponding token:
+```
+SELECT tag, token(tag), title FROM videos_by_tag;
+```
+**Question:** How many unique tokens are in the table?
+
+<details><summary><b>Answer</b></summary>
+<p>
+There are two unique tokens, one for each unique partition key.
+</p>
+</details>
+<br>
+
+✅ Exit from *cqlsh*:
+```
+exit
+```
+
+✅  Run the following command to refresh your memory as to which nodes own which token ranges.
+```
+nodetool ring
+```
+✅  Execute the following commands to map the specific tags (`datastax` and `cassandra`) to endpoints/nodes.
+
 ---
-**Note:** You could run *cqlsh* from either the `node1` or `node2` directory. You could also specify to which server (by IP) it should connect. Since all Casandra nodes are peers, it doesn't matter where inthe cluster you connect.
+**Note:** Note that we must also supply the keyspace and table name we are interested in since we set replication on a per-keyspace basis. There is more on replication to come later in this course.
 
 ---
 
-✅ Recreate the two tables we made in the previous exercises and import their data:
+
 ```
-CREATE KEYSPACE killrvideo 
-WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1 };
+nodetool getendpoints killrvideo videos_by_tag 'datastax'
 
-USE killrvideo;
-
-CREATE TABLE videos (
-  id uuid,
-  added_date timestamp,
-  title text,
-  PRIMARY KEY ((id))
-);
-
-COPY videos(id, added_date, title) 
-FROM '/workspace/ds201-lab07/data-files/videos.csv' 
-WITH HEADER=TRUE;
-
-CREATE TABLE videos_by_tag (
-  tag text,
-  video_id uuid,
-  added_date timestamp,
-  title text,
-  PRIMARY KEY ((tag), added_date, video_id))
-  WITH CLUSTERING ORDER BY(added_date DESC, video_id ASC);
-
-COPY videos_by_tag(tag, video_id, added_date, title) 
-FROM '/workspace/ds201-lab07/data-files/videos-by-tag.csv' 
-WITH HEADER=TRUE;
+nodetool getendpoints killrvideo videos_by_tag 'cassandra'
 ```
 
-You should see that the SSTable count is now 1 and the number of Memtable cells is now 0.
+✅  Run `nodetool status` again to see the token range ownership percentages.
+```
+nodetool status
+```
 
-✅ Examine the data in the *videos* table:
-```
-SELECT * FROM videos;
-```
-✅ Examine the data in the *videos_by_tag* table:
-```
-SELECT * FROM videos_by_tag;
-```
+**Question:** What do the *Owns* values mean?
+
+<details><summary><b>Answer</b></summary>
+<p>
+The <i>Owns</i> fields are the percentage of tokens owned by each node in the cluster. The tokens may not be evenly distributed because there are such a small number. The *videos* table as 5 unique tokens and the *videos_by_tag* table has 2.
+</p>
+</details>
+<br>
+
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
   <a href='command:katapod.loadPage?[{"step":"step2"}]'
    class="btn btn-dark navigation-bottom-left">⬅️ Back
  </a>
-   <a href='command:katapod.loadPage?[{"step":"step4"}]' 
+   <a href='command:katapod.loadPage?[{"step":"finish"}]' 
     class="btn btn-dark navigation-top-right">Next ➡️
   </a>
 </div>
