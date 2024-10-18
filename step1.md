@@ -20,27 +20,71 @@
 
 <!-- CONTENT -->
 
-<div class="step-title">Edit <i>cassandra.yaml</i> and set the token range</div>
+<div class="step-title">Create a <i>keyspace</i>, <i>tables</i>, and load data</div>
 
-In this exercise there is a two-node Cassandra cluster. The root directories for the nodes are: `./node1` and `./node2`. You are going to edit the configuration file (`cassandra.yaml`) for *node2*. You are going to assign an `initial_token` value of `-9223372036854775808`
+In this exercise you will start with a single Cassandra node. When the node is up and running, you will create keyspace and two tables. Next, you will load data into the tables.
 
+Once you have loaded data in the tables you will configure a second node. This node will join the first node to form a cluster. For this second node you will set the `num_tokens` value to `1` and set a value for `initial_token`. 
 
-✅ Open `/workspace/ds201-lab07/node2/conf/cassandra.yaml` in a *nano* or the text editor of your choice.
+You will then examine the data and tokens in the cluster.
+
+Use `nodetool` to verify that node1 is running. (You may need to run this command multiple times.)
+
+✅ Verify that Cassandra is running.
 ```
-nano /workspace/ds201-lab07/node2/conf/cassandra.yaml
+/workspace/ds201-lab07/node1/bin/nodetool status
 ```
 
-In the file find:
+Once Cassandra is up and running, you will recreate the tables from the prvious exercises. 
 
-`# initial_token:`
+✅ Run *cqlsh* to connect to the node:
+```
+/workspace/ds201-lab07/node1/bin/cqlsh
+```
 
-Un-comment and change `initial_token` value setting it to `-9223372036854775808`. This will allow *node2* to manage half of the token range – all of the positive tokens and one negative token of `-9223372036854775808`
+✅ Recreate the keyspace and tables you used in the previous:
+```
+CREATE KEYSPACE killrvideo 
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1 };
 
-The new entry should look like:
+USE killrvideo;
 
-`initial_token: -9223372036854775808`
+CREATE TABLE videos (
+  id uuid,
+  added_date timestamp,
+  title text,
+  PRIMARY KEY ((id))
+);
 
-Save and exit the editor.
+CREATE TABLE videos_by_tag (
+  tag text,
+  video_id uuid,
+  added_date timestamp,
+  title text,
+  PRIMARY KEY ((tag), added_date, video_id))
+  WITH CLUSTERING ORDER BY(added_date DESC, video_id ASC);
+```
+
+
+✅ Load data into the tables:
+```
+COPY videos(id, added_date, title) 
+  FROM '/workspace/ds201-lab07/data-files/videos.csv' 
+  WITH HEADER=TRUE;
+
+COPY videos_by_tag(tag, video_id, added_date, title) 
+  FROM '/workspace/ds201-lab07/data-files/videos-by-tag.csv' 
+  WITH HEADER=TRUE;
+```
+
+✅ Examine the data in the *videos* table:
+```
+SELECT * FROM videos;
+```
+✅ Examine the data in the *videos_by_tag* table:
+```
+SELECT * FROM videos_by_tag;
+```
 
 <!-- NAVIGATION -->
 <div id="navigation-bottom" class="navigation-bottom">
